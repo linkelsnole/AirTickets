@@ -1,0 +1,135 @@
+@mixin button-click {
+	&:active {
+		transform: scale(0.98);
+	}
+}
+
+.calendar {
+	width: 400px;
+	max-height: 430px;
+	position: absolute;
+	border: 1px solid #D4D5D9;
+	top: 100%;
+	left: 0;
+	transition: transform 0.4s ease, opacity 0.4s ease;
+	transform: translateY(-20%);
+	opacity: 0;
+	pointer-events: none;
+	
+	background-color: #E9EAEE;
+	z-index: 2;
+	padding: 15px;
+	box-shadow: 0px 5px 13px -10px rgba(34, 60, 80, 0.54);
+}
+
+.hidden {
+	display: none;
+}
+
+//Анимация появления
+.calendar.visible {
+	transform: translateY(0);
+	opacity: 1;
+	pointer-events: auto;
+}
+
+
+.button {
+
+	box-sizing: border-box;
+	position: absolute;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 10px; // добавляем padding
+  border-radius: 50%;
+	img {
+		width: 22px;
+		height: 22px;
+	}
+
+}
+.button-prev {
+  width: 40px;
+  height: 40px;
+	top: 5px;
+	left: 25px;
+	&:hover {
+		background-color: #D8D9DC;
+	}
+}
+.button-next {
+  width: 40px;
+  height: 40px;
+	right: 25px;
+	top: 5px;
+	&:hover {
+		background-color: #D8D9DC;
+	}
+}
+
+#month {
+	text-align: center;
+	font-weight: 700;
+	padding: 0 0 20px 0;
+}
+
+
+
+.day-title {
+	display: inline-block;
+	width: calc(100% / 7);
+	box-sizing: border-box;
+	text-align: center;
+	padding: 12px 0;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+.days-item {
+	position: relative;
+  min-height: 40px;
+  min-width: 40px;
+	cursor: pointer;
+	&:hover {
+		outline: 1px solid #E31C19;
+		outline-offset: -1px;
+	}
+}
+
+.selected-day {
+  background-color: #f36179;
+  color: white;
+  padding: 8px;
+	border-radius: 0 0 5px 5px;
+	transition: all 0.2s ease;
+
+}
+
+.day-label {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+	width: 100%;
+  transform: translateX(-50%);
+	padding-bottom: 5px;
+	padding-top: 5px;
+  font-size: 8px;
+  white-space: nowrap;
+  color: white;
+	background-color: #f36179;
+	border-radius: 5px 5px 0 0;
+}
+
+.between-days {
+	background-color: #F1D3D8;
+	transition: all 0.2s ease;
+}
+
+.inactive {
+	color: #ccc;
+	font-weight: normal;
+}
+
+
+
+
