@@ -50,11 +50,6 @@ function getById(id) {
 	return document.getElementById(id)
 }
 
-/**
- * @description Отображает текущий месяц в календаре
- * @function showCurrMonth
- * @returns {void}
- */
 function showCurrMonth() {
 	showMonth(currentYear, currentMonth);
 }

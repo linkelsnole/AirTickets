@@ -11,13 +11,35 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.resolve(__dirname)));
 
 
-const clientId = 'Ll1LhA0cORjf9A36jPk3As3SFRmjJMB9';
-const clientSecret = 'Wa0xFGW89k4MNMoL';
+// ТОп-10 авиакомпаний
+const airlinesData = [
+  { id: 1, name: "Emirates", rating: 5 },
+  { id: 2, name: "Qatar Airways", rating: 4.9 },
+  { id: 3, name: "Turkish Airlines", rating: 4.8 },
+  { id: 4, name: "Singapore Airlines", rating: 4.7 },
+  { id: 5, name: "Korean Air", rating: 4.6 },
+  { id: 6, name: "Etihad Airways", rating: 4.3 },
+  { id: 7, name: "Cathay Pacific", rating: 4.2 },
+  { id: 8, name: "Virgin Atlantic", rating: 4.1 },
+  { id: 9, name: "Air New Zealand", rating: 4.7 },
+  { id: 10, name: "Air Russia", rating: 4.5 },
+];
+
+
+
+const clientId = 'ULwxVEFEXm2XYfSFmGrZmH6KHkXMb7TF';
+const clientSecret = '9uucL5kIVvdXB6i6';
 
 const amadeusClient = new Amadeus({
   clientId: clientId,
   clientSecret: clientSecret
 });
+
+app.get('/airlines', (req, res) => {
+  res.json(airlinesData);
+});
+
+
 
 app.get('/search-cities', async (req, res) => {
   const keyword = req.query.keyword?.trim();
@@ -36,7 +58,6 @@ app.get('/search-cities', async (req, res) => {
   try {
     const response = await amadeusClient.referenceData.locations.cities.get({
       keyword: keyword,
-			lang: 'ru'
     });
     const cities = response.data
 		.filter(city => city.name.toLowerCase().startsWith(keyword.toLowerCase()))
@@ -48,8 +69,8 @@ app.get('/search-cities', async (req, res) => {
     }));
     res.json(cities);
   } catch (error) {
-    console.error('Error while searching cities:', error);
-    res.status(500).json({ error: 'Failed to fetch cities' });
+    console.error('Ошибка при поиске городов:', error);
+    res.status(500).json({ error: 'Ошибка при поиске городов' });
   }
 });
 

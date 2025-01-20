@@ -23,6 +23,8 @@
 					<li class="header__nav-list-item"><a href="" class="header__nav-link">Справка</a></li>
 					<li class="header__nav-list-item"><a href="" class="header__nav-link">Русский</a></li>
 				</ul>
+				<img class="header__nav-adaptive-globe" src="img/globe-adaptive.svg" alt="">
+				<img class="header__nav-adaptive-menu" src="img/menu.svg" alt="">
 			</nav>
 
 			<div class="header__intro">
@@ -40,14 +42,16 @@
 
 				<div class="header__intro-search">
 					<div class="header__intro-search-inputs">
-						<div class="header__intro-search-input-box">
-							<input type="text" class="header__intro-search-input" id="from" placeholder="Откуда" required>
-							<label for="from" class="header__intro-search-label">Откуда</label>
-							<img src="img/exchange-svgrepo-com.svg" alt="" class="header__intro-search-exchange">
-						</div>
-						<div class="header__intro-search-input-box-to">
-							<input type="text" class="header__intro-search-input" id="to" placeholder="Куда" required>
-							<label for="to" class="header__intro-search-label">Куда</label>
+						<div class="header__fields-cities">
+							<div class="header__intro-search-input-box">
+								<input type="text" class="header__intro-search-input" id="from" placeholder="Откуда" required>
+								<label for="from" class="header__intro-search-label">Откуда</label>
+								<img src="img/exchange-svgrepo-com.svg" alt="" class="header__intro-search-exchange">
+							</div>
+							<div class="header__intro-search-input-box-to">
+								<input type="text" class="header__intro-search-input" id="to" placeholder="Куда" required>
+								<label for="to" class="header__intro-search-label">Куда</label>
+							</div>
 						</div>
 						<div class="header__fields-date">
 							<div class="header__intro-search-input-box-there">
@@ -64,8 +68,8 @@
 								<!-- ?CALENDAR-------------------------------- -->
 							</div>
 							<div class="header__intro-search-input-box-back">
-								<input type="text" class="header__intro-search-input" id="from" placeholder="Откуда" required>
-								<label for="from" class="header__intro-search-label">Обратно</label>
+								<input type="text" class="header__intro-search-input" id="back" placeholder="Откуда" required>
+								<label for="back" class="header__intro-search-label">Обратно</label>
 							</div>
 							
 						</div>
@@ -163,9 +167,10 @@
 		</section>
 
 		<section class="popular_dest wrapper">
-			<div class="popular_dest__box wrapper">
+			<div class="popular_dest__box">
 				<div class="popular_dest__content-left">
 					<h4 class="popular_dest__content-left-title">Популярные направления</h4>
+
 					<div class="popular_dest__content-left-box">
 						<div class="popular_dest__content-left-box-item">
 							<div class="popular_dest__content-left-box-item-wrapper">
@@ -177,6 +182,7 @@
 									<span class="popular_dest__content-left-box-price">от 3 256 ₴</span>
 							</div>
 						</div>
+
 						<div class="popular_dest__content-left-box-item">
 							<div class="popular_dest__content-left-box-item-wrapper">
 									<span class="popular_dest__content-left-box-route">Варшава → Лондон</span>
@@ -187,6 +193,7 @@
 									<span class="popular_dest__content-left-box-price">от 3 364 ₴</span>
 							</div>
 						</div>
+
 						<div class="popular_dest__content-left-box-item">
 							<div class="popular_dest__content-left-box-item-wrapper">
 									<span class="popular_dest__content-left-box-route">Варшава → Аликанте</span>
@@ -197,6 +204,7 @@
 									<span class="popular_dest__content-left-box-price">от 3 364 ₴</span>
 							</div>
 						</div>
+
 						<div class="popular_dest__content-left-box-item">
 							<div class="popular_dest__content-left-box-item-wrapper">
 									<span class="popular_dest__content-left-box-route">Варшава → Мадрид</span>
@@ -207,6 +215,7 @@
 									<span class="popular_dest__content-left-box-price">от 3 364 ₴</span>
 							</div>
 						</div>
+
 						<div class="popular_dest__content-left-box-item">
 							<div class="popular_dest__content-left-box-item-wrapper">
 									<span class="popular_dest__content-left-box-route">Варшава → Барселона</span>
@@ -219,6 +228,83 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- !POPULAR DEST ADAPTIVE-------------------------------- -->
+				<div class="popular_dest__content-left-adaptive">
+					<h4 class="popular_dest__content-left-title">Популярные направления</h4>
+
+					<div class="popular_dest__content-left-box">
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+								<span class="popular_dest__content-left-box-route">Варшава → Милан</span>
+								<span class="popular_dest__content-left-box-price">от 771 ₴</span>
+							</div>
+						</div>
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+								<span class="popular_dest__content-left-box-route">Варшава → Амстердам</span>
+								<span class="popular_dest__content-left-box-price">от 3 256 ₴</span>
+							</div>
+						</div>
+
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+									<span class="popular_dest__content-left-box-route">Варшава → Лондон</span>
+									<span class="popular_dest__content-left-box-price">от 1 001 ₴</span>
+							</div>
+						</div>
+
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+									<span class="popular_dest__content-left-box-route">Варшава → Лиссабон</span>
+									<span class="popular_dest__content-left-box-price">от 3 364 ₴</span>
+							</div>
+						</div>
+
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+									<span class="popular_dest__content-left-box-route">Варшава → Аликанте</span>
+									<span class="popular_dest__content-left-box-price">от 1 001 ₴</span>
+							</div>
+						</div>
+
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+									<span class="popular_dest__content-left-box-route">Варшава → Париж</span>
+									<span class="popular_dest__content-left-box-price">от 3 364 ₴</span>
+							</div>
+						</div>
+
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+									<span class="popular_dest__content-left-box-route">Варшава → Мадрид</span>
+									<span class="popular_dest__content-left-box-price">от 1 001 ₴</span>
+							</div>
+						</div>
+
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+									<span class="popular_dest__content-left-box-route">Варшава → Нью-Йорк</span>
+									<span class="popular_dest__content-left-box-price">от 3 364 ₴</span>
+							</div>
+						</div>
+
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+									<span class="popular_dest__content-left-box-route">Варшава → Барселона</span>
+									<span class="popular_dest__content-left-box-price">от 1 001 ₴</span>
+							</div>
+						</div>
+
+						<div class="popular_dest__content-left-box-item">
+							<div class="popular_dest__content-left-box-item-wrapper">
+									<span class="popular_dest__content-left-box-route">Варшава → Денпасар-Бали</span>
+									<span class="popular_dest__content-left-box-price">от 3 364 ₴</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="popular_dest__content-right">
 					<div class="popular_dest__content-right-title">
 						<h4 class="popular_dest__content-right-title-h4">ТОП-10 авиакомпаний</h4>
@@ -226,7 +312,7 @@
 					</div>
 					<article class="popular_dest__content-right-box">
 						<ol class="popular_dest__content-right-box-list">
-							<li><a href="">Эмирейтс</a></li>
+							<!-- <li><a href="">Эмирейтс</a></li>
 							<li><a href="">Катар Эйрвейз</a></li>
 							<li><a href="">Тюркиш Эрлайнз</a></li>
 							<li><a href="">Сингапур зирлаинз</a></li>
@@ -235,7 +321,7 @@
 							<li><a href="">Катай Пасифик</a></li>
 							<li><a href="">Эйр Астана</a></li>
 							<li><a href="">Верджин Атлантик Эйрвэйз</a></li>
-							<li><a href="">Эйр Нью Зиланд</a></li>
+							<li><a href="">Эйр Нью Зиланд</a></li> -->
 						</ol>
 					</article>
 				</div>
@@ -278,8 +364,11 @@
 							<h4>Лучшие предложения для путешествий</h4>
 							<img src="../img/comp.svg" alt="">
 						</div>
-						<input type="email">
-						<button>&gt;</button>
+						<div class="questions__content-right-email-box">
+							<input type="email" placeholder="Введите ваш email">
+							<img class="" src="../img/mark-error.svg" alt="">
+							<button>&gt;</button>
+						</div>
 					</article>
 				</div>
 			</div>
@@ -296,74 +385,80 @@
 				<img src="../img/mastercard.svg" alt="">
 			</div>
 			<div class="footer__lists">
-				<ul>
-					<div>
-						<li>Страны</li>
-						<li>Испания</li>
-						<li>Турция</li>
-						<li>Египет</li>
-						<li>Грузия</li>
-						<li>Польша</li>
-						<li>Франция</li>
+				<ul> <div>Страны</div>
+					<div class="hidden-footer">
+						<div>
+							<li>Испания</li>
+							<li>Турция</li>
+							<li>Египет</li>
+							<li>Грузия</li>
+							<li>Польша</li>
+							<li>Франция</li>
+						</div>
+						<li ><a href="">Все страны→</a></li>
 					</div>
-					<li><a href="">Все страны→</a></li>
 				</ul>
-				<ul>
-					<div>
-						<li>Города</li>
-						<li>Кишинев</li>
-						<li>Дубаи</li>
-						<li>Варшава</li>
-						<li>Прага</li>
-						<li>Париж</li>
-						<li>Франкфурт</li>
+				<ul> <div>Города</div>
+					<div class="hidden-footer">
+						<div>
+							<li>Кишинев</li>
+							<li>Дубаи</li>
+							<li>Варшава</li>
+							<li>Прага</li>
+							<li>Париж</li>
+							<li>Франкфурт</li>
+						</div>
+						<li><a href="">Все города→</a></li>
 					</div>
-					<li><a href="">Все города→</a></li>
 				</ul>
-				<ul>
-					<div>
-						<li>Направления</li>
-						<li>Кишинев - Стамбул</li>
-						<li>Кишинев - Дубаи</li>
-						<li>Кишинев - Варшава</li>
-						<li>Кишинев - Прага</li>
-						<li>Кишинев - Париж</li>
-						<li>Кишинев - Франкфурт</li>
+				<ul> <div>Направления</div>
+					<div class="hidden-footer">
+						<div>
+							<li>Кишинев - Стамбул</li>
+							<li>Кишинев - Дубаи</li>
+							<li>Кишинев - Варшава</li>
+							<li>Кишинев - Прага</li>
+							<li>Кишинев - Париж</li>
+							<li>Кишинев - Франкфурт</li>
+						</div>
+						<li><a href="">Все направления→</a></li>
 					</div>
-					<li><a href="">Все направления→</a></li>
 				</ul>
-				<ul>
-					<div>
-						<li>Аэропорты</li>
-						<li>Ф. Шопен (Варшава)</li>
-						<li>Франкфурт Интернешн….</li>
-						<li>Аеропорт Кишинев</li>
-						<li>Фиумичино (Рим)</li>
-						<li>Аэропорт Стамбула</li>
-						<li>Шарль Де Голль (Париж)</li>
+				<ul> <div>Аэропорты</div>
+					<div class="hidden-footer">
+						<div>
+							<li>Ф. Шопен (Варшава)</li>
+							<li>Франкфурт Интернешн….</li>
+							<li>Аеропорт Кишинев</li>
+							<li>Фиумичино (Рим)</li>
+							<li>Аэропорт Стамбула</li>
+							<li>Шарль Де Голль (Париж)</li>
+						</div>
+						<li class="hidden-footer"><a href="">Все аэропорты→</a></li>
 					</div>
-					<li><a href="">Все аэропорты→</a></li>
 				</ul>
-				<ul>
-					<div>
-						<li>Авиакомпании</li>
-						<li>Тюркиш Эрлайнз</li>
-						<li>Wizz Air Украина</li>
-						<li>Qatar Airways</li>
-						<li>VanaIY</li>
-						<li>Air Baltic</li>
+				<ul> <div>Авиакомпании</div>
+					<div class="hidden-footer">
+						<div>
+							<li>Тюркиш Эрлайнз</li>
+							<li>Wizz Air Украина</li>
+							<li>Qatar Airways</li>
+							<li>VanaIY</li>
+							<li>Air Baltic</li>
+						</div>
+						<li><a href="">Все авиакомпании→</a></li>
 					</div>
-					<li><a href="">Все авиакомпании→</a></li>
 				</ul>
-				<ul>
-					<div>
-						<li>Наши сервисы</li>
-						<li>Рейтинг авиакомпаний</li>
-						<li>Сравнение цен</li>
-						<li>Расписание рейсов</li>
-						<li>Акции</li>
+				<ul> <div>Наши сервисы</div>
+					<div class="hidden-footer">
+						<div>
+							<li>Рейтинг авиакомпаний</li>
+							<li>Сравнение цен</li>
+							<li>Расписание рейсов</li>
+							<li>Акции</li>
+						</div>
+						<li><a href="">Карта сайта→</a></li>
 					</div>
-					<li><a href="">Карта сайта→</a></li>
 				</ul>
 			</div>
 			<div class="footer__social">
@@ -388,6 +483,7 @@
 	<script type="module" src="../js/pass.js"></script>
 	<script type="module" src="../js/searchCities.js"></script>
 	<script type="module" src="../js/jsonData.js"></script>
+	<script type="module" src="../js/footer.js"></script>
 </body>
 </html>
 

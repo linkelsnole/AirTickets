@@ -1,0 +1,153 @@
+$color-purple: #7413DB;
+$color-white: #ffffff;
+$color-red: #FF4D4D;
+$color-bg-gray: #EFF1F4;
+//?PASS--------------------------------
+.pass__box {
+	position: absolute;
+	border: 1px solid #EFF1F4;
+	background: white;
+	right: -2px;
+	width: 350px;
+	z-index: 2;
+	transition: transform 0.4s ease, opacity 0.4s ease;
+	transform: translateY(-20%);
+	opacity: 0;
+	@media (max-width: 500px) {
+		right: 0;
+	}
+
+	ul {
+		padding: 15px;
+		>span:nth-child(1) {
+			display: block;
+			font-size: 16px;
+			color: #999;
+			margin-bottom: 25px;
+
+		}
+	}
+
+	&-classes {
+		padding: 15px;
+		&-title {
+			font-size: 16px;
+			display: block;
+			margin-bottom: 15px;
+		}
+		&-item {
+			display: flex;
+			gap: 10px;
+			margin-bottom: 30px;
+			cursor: pointer;
+			.active_class {
+				background: #F74169;
+				color: $color-white;
+				padding: 10px 10px;
+				border-radius: 20px;
+				box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.20);
+			}
+			.inactive_class {
+				background: $color-white;
+				color: black;
+				padding: 10px 10px;
+				border-radius: 20px;
+				box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.20);
+				transition: all 0.2s;
+				&:hover {
+					background: #EFF1F4;
+				}
+			}
+		}
+		button {
+			width: 100%;
+			background: #F74169;
+			color: $color-white;
+			padding: 14px 10px;
+			border-radius: 5px;
+			border: none;
+			cursor: pointer;
+			box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.35);
+			transition: all 0.1s;
+			@include button-click;
+			&:hover {
+				background: #FF4D4D;
+			}
+		}
+	}
+	pointer-events: none;
+}
+
+//Анимация появления
+.pass__box.visible {
+	transform: translateY(0);
+	opacity: 1;
+	pointer-events: auto;
+}
+
+
+.list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 25px;
+	span {
+		font-size: 16px;
+		color: black;
+		
+		span {
+			display: block;
+			font-size: 12px;
+			margin-top: 5px;
+			color: #999;
+		}
+	}
+}
+
+.minus, .plus {
+	font-size: 30px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.20);
+	cursor: pointer;
+	background: #FFF;
+	font-weight: 100;
+	color: #A6ACB1;
+	border: none;
+	transition: all 0.2s;
+	&:hover {
+		background: #EFF1F4;
+	}
+}
+
+.minus {
+	padding-bottom: 3px;
+}
+
+.counter {
+	position: relative;
+	top: -3px;
+	padding: 0 10px;
+}
+
+.custom-hr {
+	border: 0;
+	border-top: 1px solid #E8EAEB; 
+}
+
+
+.disabled-btn {
+	pointer-events: none;
+  opacity: 0.5;        
+  cursor: not-allowed; 
+}
+#pass {
+	cursor: pointer; 
+	input {
+		pointer-events: none;
+	}
+	@media (max-width: 500px) {
+		border-top: 1px solid #D3D5D8;
+	}
+}
