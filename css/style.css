@@ -264,6 +264,7 @@
 
 #pass {
   cursor: pointer;
+  flex: 1 1 280px;
 }
 #pass input {
   pointer-events: none;
@@ -522,9 +523,13 @@ body {
 }
 .header__intro-search-inputs {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 1000px) {
+  .header__intro-search-inputs {
+    flex-wrap: wrap;
+  }
 }
 @media (max-width: 500px) {
   .header__intro-search-inputs {
