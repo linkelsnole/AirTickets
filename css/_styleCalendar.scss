@@ -5,7 +5,7 @@
 }
 
 .calendar {
-	width: 400px;
+	width: 202%;
 	max-height: 430px;
 	position: absolute;
 	border: 1px solid #D4D5D9;
@@ -23,6 +23,10 @@
 	@media (max-width: 500px) {
 		left: -2px;
 	}
+	@media (max-width: 415px) {
+		width: 202%;
+	}
+
 }
 
 .hidden {

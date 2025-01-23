@@ -1,6 +1,7 @@
 @import 'styleCalendar';
 @import 'pass';
 @import 'city-suggestions';
+@import 'animation';
 
 $color-purple: #7413DB;
 $color-white: #ffffff;
@@ -18,6 +19,17 @@ $color-bg-gray: #EFF1F4;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
+
+}
+
+html {
+	width: 100%;
+	overscroll-behavior-x: none;
 }
 
 .wrapper {
@@ -38,9 +50,11 @@ body {
 	background-color: #7413DB;
 	padding-bottom: 108px;
 
+
 	&__nav {
-		padding-top: 7px;
-		font-size: 12px;
+		padding-top: 10px;
+		padding-bottom: 75px;
+		font-size: 13px;
 		font-weight: 400;
 		line-height: 1.5;
 		color: $color-white;
@@ -50,15 +64,15 @@ body {
 		a {
 			text-decoration: none;
 			color: $color-white;
+			
 		}
 		&-list {
-			margin-bottom: 45px;
 			list-style: none;
 			display: flex;
-			gap: 35px;
+			gap: 60px;
 			li:nth-child(n+2) {
 				position: relative;
-				&:after {
+				>a:after {
 					content: '▼';
 					font-size: 6px;
 					margin-left: 5px;
@@ -69,16 +83,13 @@ body {
 				}
 				&:hover {
 					color: $color-red;
-					&:after {
-						transform: rotate(180deg);
-					}
 				}
 			}
 			&-item {
 				display: inline-block;
 				cursor: pointer;
 				&:nth-child(4) {
-					a {
+					>a {
 						&::before {
 							position: relative;
 							content: url(../img/globe.svg);
@@ -88,10 +99,16 @@ body {
 						}
 					}
 				}
+				a {
+					
+				}
 				&:hover {
-					a {
-						transition: all 0.3s;
+					>a {
+						transition: all 0.1s;
 						color: $color-red;
+						&:after {
+							transform: rotate(180deg);
+						}
 					}
 				}
 			}
@@ -445,6 +462,81 @@ body {
 }
 
 
+
+//?DROP-MENU--------------------------
+.drop-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	max-width: 500%;
+	min-width: 100%;
+	background-color: $color-white;
+	z-index: 2;
+	list-style: none;
+	margin: 0;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.1s ease-in-out;
+	font-size: 12px;
+	@media (max-width: 500px) {
+		display: none;
+		position:relative;
+		top: 0;
+		background: inherit;
+		font-size: inherit;
+		color: white;
+		margin-top: 15px;
+		// max-height: 0;
+		
+	}
+	li:nth-child(n) {
+		padding: 10px;
+		white-space: nowrap;
+		a:after {
+			content: none;
+		}
+		@media (min-width: 501px) {
+			&:hover {
+				background-color: #EFF1F4;
+			}
+		}
+		@media (max-width: 500px) {
+			&:active {
+				color: #FF4D4D; 
+			}
+		}
+
+	}
+	a {
+		color: black;
+		@media (max-width: 500px) {
+			color: white;
+		}
+	}
+}
+
+.drop-menu-out {
+	animation: myAnimOut 0.3s ease-in-out;
+	visibility: hidden;
+	opacity: 0;
+}
+.drop-menu-in {
+	visibility: visible;
+	opacity: 1;
+	animation: myAnimIn 0.3s ease-in-out;
+	@media (max-width: 500px) {
+		display: block;
+		// max-height: 500%;
+	}
+}
+
+
+
+
+
+
+
+
 //?MAIN--------------------------------
 
 .main {
@@ -466,7 +558,7 @@ body {
 	background-color: $color-white;
 	display: flex;
 	gap: 20px;
-	padding: 20px 20px 0 25px;
+	padding: 20px 20px 20px 25px;
 	border-radius: 7px;
 	box-shadow: 0px 5px 13px -10px rgba(34, 60, 80, 0.54);
 	@media (max-width: 500px) {
@@ -474,6 +566,10 @@ body {
 	}
 
 	&-content {
+		position: relative;
+		@media (max-width: 500px) {
+			padding-bottom: 30px;
+		}
 		&-title {
 			font-size: 15px;
 			font-weight: 400;
@@ -488,6 +584,9 @@ body {
 			list-style: none;
 			@include text-gray;
 			margin-bottom: 25px;
+			@media (max-width: 500px) {
+
+			}
 
 			li {
 				margin-right: 10px;
@@ -510,12 +609,20 @@ body {
 			line-height: 1.5;
 			padding: 10px 15px;
 			transition: all 0.3s;
+			display: inline-block;
+			position: absolute;
+			bottom: 0;
+			left: 0;
 			@include button-click;
 			@media (min-width: 501px) {
 				&:hover {
 					background-color: #F74069;
 					color: $color-white;
 				}
+			}
+			@media (max-width: 400px) {
+				font-size: 12px;
+				white-space: nowrap;
 			}
 		}
 	}
@@ -675,7 +782,6 @@ body {
 
 	&-box {
 		background-color: white;
-		padding: 20px;
 		border-radius: 7px;
 		box-shadow: 0px 5px 13px -10px rgba(34, 60, 80, 0.54);
 
@@ -685,16 +791,25 @@ body {
 
 			li {
 				font-size: 15px;
-        margin-bottom: 20px;
+        padding: 12px 20px;
         display: flex;
         align-items: center;
-        gap: 8px;
+				cursor: pointer;
+        
 
 				&::before {
 					content: counter(my-counter);
 					counter-increment: my-counter;
 					color: #666;
 					min-width: 20px;
+				}
+				@media (min-width: 501px) {
+					&:hover {
+						background: #EFF1F4;
+						a{
+							color: #0042a6;
+						}
+					}
 				}
 
 			a {
@@ -707,9 +822,6 @@ body {
 				&:after {
 					content: url(../img/star.svg) '\00a0\00a0 ' var(--rating) ;
 					color: #666;
-				}
-				&:hover {
-					color: #0042a6;
 				}
 			}
 			&:last-child {
@@ -783,7 +895,6 @@ body {
 		}
 		&-box {
 			background: white;
-			padding: 20px;
 			border-radius: 7px;
 			box-shadow: 0px 5px 13px -10px rgba(34, 60, 80, 0.54);
 			
@@ -794,20 +905,24 @@ body {
 				li {
 					display: flex;
 					align-items: center;
-					gap: 8px;
+					padding: 12px 20px;
+					cursor: pointer; 
 					a {
 						font-size: 15px;
-						margin-bottom: 20px;
 						text-decoration: none;
 						color: #3E89F8;
-						transition: color 0.3s;
-						&:hover {
-							color: #0042a6;
-						}
 					}
 					&:last-child {
 						a {
 							margin-bottom: 0;
+						}
+					}
+					@media (min-width: 501px) {
+						&:hover {
+							background: #EFF1F4;
+							a{
+								color: #0042a6;
+							}
 						}
 					}
 				}
@@ -852,6 +967,9 @@ body {
 				padding: 12px;
 				border-radius: 5px;
 				width: 85%;
+				@media (max-width: 500px) {
+					width: 80%;
+				}
 			}
 			button {
 				border-radius: 5px;

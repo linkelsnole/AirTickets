@@ -62,4 +62,23 @@ menuAdaptive.addEventListener('click', () => {
 
 
 
+document.querySelector('.questions__content-right-box').addEventListener('click', (e) => {
+  const li = e.target.closest('li');
+  if (li) {
+    const link = li.querySelector('a');
+    if (link) {
+      link.click();
+    }
+  }
+});
+document.querySelector('.popular_dest__content-right-box-list').addEventListener('click', (e) => {
+  const li = e.target.closest('li');
+  if (li) {
+    const link = li.querySelector('a');
+    if (link) {
+      link.click();
+    }
+  }
+});
+
 
