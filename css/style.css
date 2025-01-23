@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .calendar {
   width: 202%;
-  max-height: 430px;
+  max-height: 600px;
   position: absolute;
   border: 1px solid #D4D5D9;
   top: 100%;
@@ -10,7 +10,7 @@
   transform: translateY(-20%);
   opacity: 0;
   pointer-events: none;
-  background-color: #E9EAEE;
+  background: #FFF;
   z-index: 2;
   padding: 15px;
   box-shadow: 0px 5px 13px -10px rgba(34, 60, 80, 0.54);
@@ -82,7 +82,7 @@
   box-sizing: border-box;
   text-align: center;
   padding: 12px 0;
-  margin-bottom: 10px;
+  margin-bottom: 17px;
   font-weight: bold;
 }
 
@@ -97,17 +97,26 @@
   outline-offset: -1px;
 }
 
+.current-days {
+  background-color: #EFF1F4;
+  padding: 8px;
+  border-radius: 0 0 5px 5px;
+  transition: all 0.2s ease;
+  transition: outline 0s ease;
+}
+
 .selected-day {
   background-color: #f36179;
   color: white;
   padding: 8px;
   border-radius: 0 0 5px 5px;
   transition: all 0.2s ease;
+  transition: outline 0s ease;
 }
 
 .day-label {
   position: absolute;
-  top: -15px;
+  top: -20px;
   left: 50%;
   width: 100%;
   transform: translateX(-50%);
@@ -122,12 +131,27 @@
 
 .between-days {
   background-color: #F1D3D8;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .inactive {
   color: #ccc;
   font-weight: normal;
+}
+
+.current-day-label {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-size: 8px;
+  white-space: nowrap;
+  color: black;
+  background-color: #EFF1F4;
+  border-radius: 5px 5px 0 0;
 }
 
 .pass__box {
@@ -353,9 +377,6 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-       user-select: none;
 }
 
 html {

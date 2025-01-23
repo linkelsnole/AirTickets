@@ -11,12 +11,14 @@ headerNavListItem.forEach(item => {
 		e.preventDefault();
 	});
 
-	item.addEventListener('mouseenter', () => {
-		dropMenuClosest.classList.remove('drop-menu-out');
-		dropMenuClosest.classList.add('drop-menu-in');
-	})
-	item.addEventListener('mouseleave', () => {
-		dropMenuClosest.classList.remove('drop-menu-in');
-		dropMenuClosest.classList.add('drop-menu-out');
-	})
+	if (dropMenuClosest) {
+		item.addEventListener('mouseenter', () => {
+			dropMenuClosest.classList.remove('drop-menu-out');
+			dropMenuClosest.classList.add('drop-menu-in');
+		})
+		item.addEventListener('mouseleave', () => {
+			dropMenuClosest.classList.remove('drop-menu-in');
+			dropMenuClosest.classList.add('drop-menu-out');
+		})
+	}
 })
