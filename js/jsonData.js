@@ -13,11 +13,19 @@ searchBtn.addEventListener('click', () => {
 		dates: flightDates,
 		passengers: flightPassengers
 	}
-	
-	const flightDataJson = JSON.stringify(flightData);
-	alert('Данные отправлены в json-формате (см. консоль)')
-	console.log('Итоги заказа:');
-	console.log(flightDataJson);
+
+	const isValid = flightData.direction.fromDirection && 
+	flightData.direction.toDirection && 
+	flightData.dates.thereDirectionDate && 
+	flightData.dates.backDirectionDate;
+
+	if (isValid) {
+		const flightDataJson = JSON.stringify(flightData);
+		alert('Данные отправлены (см. консоль)')
+		console.log('Итоги заказа:');
+		console.log(flightDataJson);
+	} else 
+	alert('Пожалуйста, заполните все поля!')
 })
 
 

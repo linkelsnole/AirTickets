@@ -29,6 +29,12 @@ let clickedDays = [];
 let betweenDays = [];
 let allDays = [];
 
+
+let selectedDates = {
+	start: null,
+	end: null
+};
+
 export const flightDates = {
 	thereDirectionDate: null,
 	backDirectionDate: null
@@ -72,6 +78,8 @@ function showCurrMonth() {
  * @description Отрисовывает выбранные дни в календаре
  */
 function paintDay(day) {
+	console.log('counter', counter);
+	
 	
 	if (counter > 1) {
 		counter = 0;
@@ -88,17 +96,25 @@ function paintDay(day) {
 	}
 
 	const dayNumber = day.textContent.replace(/[^\d]/g, '');
+	
+	
 
 	//Если это 2-ой клик и выбранный день раньше первого
-	if (clickedDays.length && 
-		+dayNumber < +clickedDays[0].textContent.replace(/[^\d]/g, '')) {			 
-		counter = 0;
-		clickedDays.forEach(item => {
-			item.querySelector('.day-label').remove();
-			item.classList.remove('selected-day');
-			clickedDays = [];
-		})
-		clickedDays =[];
+	if (clickedDays.length) {
+			const firstClickDate = new Date(clickedDays[0].dataset.fullDate.split('.').reverse().join('-'));
+			const currentFullDate = day.dataset.fullDate;
+			const currentClickDate = new Date(currentFullDate.split('.').reverse().join('-'));
+			
+			if (currentClickDate < firstClickDate) {
+					counter = 0;
+					clickedDays.forEach(item => {
+							item.querySelector('.day-label')?.remove();
+							item.classList.remove('selected-day');
+					});
+					clickedDays = [];
+					selectedDates.start = null;
+					selectedDates.end = null;
+			}
 	}
 	clickedDays.push(day);
 
@@ -106,14 +122,12 @@ function paintDay(day) {
 		const dayNum = day.getAttribute('data-day') || dayNumber;
 		thereDirection.value = `${dayNum.padStart(2, '0')}.${(currentMonth + 1).toString().padStart(2, '0')}.${currentYear}`;
 		flightDates.thereDirectionDate = thereDirection.value;//обнова объекта
-		console.log('flightDates', flightDates);
-		
+		selectedDates.start = thereDirection.value;
 	}
 
 	if (counter === 1) {
 		let first = allDays.indexOf(clickedDays[0]);
 		let last = allDays.indexOf(clickedDays[1]);
-		console.log(`first: ${first}, last: ${last}, clickedDays:`, clickedDays); 
 		
 		if (first === last) { 
 			counter = 0;
@@ -124,12 +138,18 @@ function paintDay(day) {
 				item.classList.remove('selected-day');
 			});
 			clickedDays = [];
+			// Сбрасываем выбранные даты
+			selectedDates.start = null;
+			selectedDates.end = null;
 			return;
 		}
+
 		backDirection.value = `${dayNumber}.${(currentMonth + 1).toString().padStart(2, '0')}.${currentYear}`;
-		
 		flightDates.backDirectionDate = backDirection.value;//обнова объекта
 
+		// Сохраняем конечную дату
+		selectedDates.end = backDirection.value;
+		console.log('selectedDates', selectedDates);
 		betweenDays = allDays.slice(first+1, last);
 		betweenDays.forEach(item => {
 			item.classList.add('between-days');
@@ -139,11 +159,14 @@ function paintDay(day) {
 	const label = document.createElement('div');
   label.classList.add('day-label');
   label.textContent = counter === 0 ? 'Туда' : 'Обратно';
+	label.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
   day.appendChild(label);
-
   day.classList.add('selected-day');
 
 	counter += 1;
+	console.log('counter++', counter);
 }
 
 
@@ -152,6 +175,7 @@ function paintDay(day) {
  * Отрисовывает месяц в календаре
  */
 function showMonth(year, month) {
+	allDays =[];//------------------------------------------------------
 	getById('month').textContent = `${months[month]} ${year}`
 	let firstDayOfMonth = new Date(year, month, 7).getDay();
 	let lastDayOfMonth = new Date(year, month + 1, 0).getDate();
@@ -175,8 +199,8 @@ function showMonth(year, month) {
 
 		let day = document.createElement('div')
 		day.textContent = i
-
 		day.classList.add('day-title', 'days-item')
+		day.dataset.fullDate = `${i.toString().padStart(2, '0')}.${(month + 1).toString().padStart(2, '0')}.${year}`;//РЕШЕНИЕ
 
 
 		if (i === currentDay && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
@@ -211,22 +235,24 @@ function showMonth(year, month) {
 
 		if (i === lastDayOfMonth) {
 			let remainDays = new Date(year, month, i).getDay();
-			counter = 1;
+			let counterRemain = 1;
 			for (remainDays; remainDays < 7; remainDays++) {
 				let day = document.createElement('div')
-				day.textContent = counter
+				day.textContent = counterRemain
 				day.classList.add('day-title', 'inactive')
 				calendar.append(day)
-				counter += 1;
+				counterRemain += 1;
 			}
 		}
 	}
 }
 
+
 /** 
  * Отрисовывает месяц в календаре
  */
 function nextMonth() {
+	
 	if (currentMonth === 11) {
 		currentMonth = 0;
 		currentYear += 1;
@@ -235,7 +261,6 @@ function nextMonth() {
 	}
 	clearCalendar()
 	showCurrMonth()
-
 }
 
 function clearCalendar() {
@@ -251,8 +276,8 @@ function prevMonth() {
 	}
 	clearCalendar()
 	showCurrMonth()
-}
 
+}
 
 /** 
  * Создает календарь
@@ -274,7 +299,6 @@ function createCalendar() {
 	showCurrMonth()
 
 }
-
 
 
 
